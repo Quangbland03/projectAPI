@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('users.home');
 });
 Route::get('/a', function () {
-    return view('users.productDetail');
+    return view('users.Layoutuser');
 });
