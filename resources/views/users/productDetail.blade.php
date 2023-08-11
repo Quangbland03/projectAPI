@@ -125,4 +125,15 @@
     </div>
     <!-- /container -->
 </div>
+<script>
+    function getIDFromURL() {
+    const url = window.location.href;
+    const segments = url.split('/');
+    return segments[segments.length - 1];
+}
+
+// Get the ID from the URL
+const myid = getIDFromURL();
+alert(myid);
+</script>
 @endsection
