@@ -13,8 +13,23 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexHome()
     {
+        $list = Product::all(); 
+        return response()->json($list);
+    }
+
+    public function indexSmart() {
+        $list = Product::all(); 
+        return response()->json($list);
+    }
+
+    public function indexCamera() {
+        $list = Product::all(); 
+        return response()->json($list);
+    }
+
+    public function indexAccessories() {
         $list = Product::all(); 
         return response()->json($list);
     }
