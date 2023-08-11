@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\OrderItem;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductDetail;
 use App\Models\Category;
 
 class ProductController extends Controller
@@ -14,13 +15,28 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexHome()
     {
         $categoryId = Category::where('name', 'Điện thoại')->value('id');
 
         $show = Product::where('category_id', $categoryId )->get();
 
         return response()->json($show);
+    }
+
+    public function indexSmart() {
+        $list = Product::all();
+        return response()->json($list);
+    }
+
+    public function indexCamera() {
+        $list = Product::all();
+        return response()->json($list);
+    }
+
+    public function indexAccessories() {
+        $list = Product::all();
+        return response()->json($list);
     }
 
     /**
@@ -44,7 +60,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-
+        $product = Product::with('product_id')->findOrFail($id);
+        return response()->json($product );
     }
 
     /**

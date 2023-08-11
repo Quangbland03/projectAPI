@@ -19,3 +19,17 @@ Route::get('/', function () {
 Route::get('productDetail/{id}', function () {
     return view('users.productDetail');
 });
+Route::get('/a', function () {
+    return view('users.layoutUser');
+});
+Route::get('/smartphone', function () {
+    return view('users.smartPhone');
+})->name('smartphone');
+Route::get('/camera', function () {
+    return view('users.camera');
+})->name('camera');
+Route::get('/accessories', function () {
+    return view('users.accessories');
+})->name('accessories');
+
+

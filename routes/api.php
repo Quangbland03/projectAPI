@@ -19,5 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('list', [ProductController::class, 'index']);
+Route::get('list', [ProductController::class, 'indexHome']);
 Route::get('list1/{id}', [ProductController::class, 'show']);
+Route::get('listSmart', [ProductController::class, 'indexSmart']);
+Route::get('listCamera', [ProductController::class, 'indexCamera']);
+Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
