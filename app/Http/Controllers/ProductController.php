@@ -36,6 +36,7 @@ class ProductController extends Controller
     public function indexAccessories() {
         $list = Product::all(); 
         return response()->json($list);
+
     }
 
     /**

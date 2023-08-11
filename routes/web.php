@@ -15,15 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('users.home');
-<<<<<<< HEAD
+
 })->name('home');
 Route::get('/a', function () {
     return view('users.layoutUser');
-=======
+
 });
 Route::get('productDetail/{id}', function () {
     return view('users.productDetail');
->>>>>>> quang
+});
+Route::get('productDetail/{id}', function () {
+    return view('users.productDetail');
 });
 Route::get('/smartphone', function () {
     return view('users.smartPhone');
