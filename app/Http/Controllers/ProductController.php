@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\OrderItem;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -15,8 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $list = Product::all(); 
-        return response()->json($list);
+        $categoryId = Category::where('name', 'Điện thoại')->value('id');
+
+        $show = Product::where('category_id', $categoryId )->get();
+
+        return response()->json($show);
     }
 
     /**
@@ -40,7 +44,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**

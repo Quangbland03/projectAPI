@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('users.home');
 });
-Route::get('/a', function () {
-    return view('users.Layoutuser');
+Route::get('productDetail/{id}', function () {
+    return view('users.productDetail');
 });
