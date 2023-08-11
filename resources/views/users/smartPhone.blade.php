@@ -16,7 +16,7 @@
     <div class="container ">
 
         <div class="row list-container mt-50">
-                
+
         </div>
 
     </div>

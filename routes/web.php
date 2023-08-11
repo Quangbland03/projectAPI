@@ -34,6 +34,9 @@ route::prefix('admin')->name('admin.')->group(function()
 Route::get('productDetail/{id}', function () {
     return view('users.productDetail');
 });
+Route::get('/', function () {
+    return view('admin.product');
+});
 Route::get('/a', function () {
     return view('users.layoutUser');
 });

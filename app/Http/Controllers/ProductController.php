@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Models\OrderItem;
 use App\Models\Order;
 use App\Models\Product;
@@ -17,53 +18,52 @@ class ProductController extends Controller
      */
     public function indexHome()
     {
-        $categoryId = Category::where('name', 'Điện thoại')->value('id');
-
-        $show = Product::where('category_id', $categoryId )->get();
+        $show = Product::all();
 
         return response()->json($show);
     }
 
     public function indexSmart() {
-        $list = Product::all();
-        return response()->json($list);
-    }
+        $categoryId = Category::where('name', 'Smart Phone')->value('id');
 
+        $show = Product::where('category_id', $categoryId )->get();
+
+        return response()->json($show);
+    }
     public function indexCamera() {
-        $list = Product::all();
-        return response()->json($list);
-    }
+        $categoryId = Category::where('name', 'Camera')->value('id');
 
+        $show = Product::where('category_id', $categoryId )->get();
+
+        return response()->json($show);
+    }
     public function indexAccessories() {
-        $list = Product::all();
-        return response()->json($list);
-    }
+        $categoryId = Category::where('name', 'Accessorie')->value('id');
 
+        $show = Product::where('category_id', $categoryId )->get();
+
+        return response()->json($show);
+    }
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
-
     /**
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        $product = Product::with('product_id')->findOrFail($id);
-        return response()->json($product );
-    }
+{
+    $product = Product::join('product_details', 'products.id', '=', 'product_details.product_id')
+        ->select('products.*', 'product_details.*')
+        ->where('products.id', $id)
+        ->first();
 
+    return response()->json($product);
+}
     /**
      * Show the form for editing the specified resource.
      */
@@ -71,7 +71,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -79,7 +78,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      */
