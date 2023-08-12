@@ -11,7 +11,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'description',
-        'iamge',
+        'image',
         'price',
         'category_id',
     ];
@@ -32,5 +32,5 @@ class Product extends Model
         return $this->hasMany(Comment::class);
     }
 
-  
+
 }

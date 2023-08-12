@@ -48,10 +48,26 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function store(Request $request)
-    {
-        //
-    }
+     public function store(Request $request)
+     {
+         $product = new Product([
+             'name' => $request->input('name'),
+             'description' => $request->input('description'),
+             'image' => $request->input('image'),
+             'price' => $request->input('price'),
+             'category_id' => $request->input('category_id')
+         ]);
+
+         $product->save();
+         $response = [
+            'status' => 'success',
+            'message' => 'Product added successfully',
+            'product' => $product
+        ];
+
+        return response()->json($response);
+     }
+
     /**
      * Display the specified resource.
      */
@@ -67,13 +83,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         //
@@ -82,7 +92,14 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    {$product = Product::findOrFail($id);
+
+        $product->delete();
+        $response = [
+            'status' => 'success',
+            'message' => 'Product deleted successfully',
+        ];
+
+        return response()->json($response);
     }
 }

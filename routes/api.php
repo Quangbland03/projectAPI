@@ -25,4 +25,6 @@ Route::get('listok/{id}', [ProductController::class, 'show']);
 Route::get('listSmart', [ProductController::class, 'indexSmart']);
 Route::get('listCamera', [ProductController::class, 'indexCamera']);
 Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
+Route::post('storeProduct', [ProductController::class, 'store']);
 Route::get('listCategory', [CategoryController::class, 'index']);
+Route::delete('deleteProduct/{id}', [ProductController::class, 'destroy']);
