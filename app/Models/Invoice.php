@@ -14,7 +14,10 @@ class Invoice extends Model
         'total',
     ];
 
-    public function products(){
-        return $this->belongsToMany(Product::class);
+    public function customers(){
+        return $this->belongsTo(Customer::class);
+    }
+    public function oders(){
+        return $this->belongsTo(Order::class);
     }
 }

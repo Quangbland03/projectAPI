@@ -85,7 +85,7 @@
          <a href="/productDetail/${element.id}">
 <div class="product">
     <div class="product-img">
-        <img src="{{ asset('asset/img/${element.image}')}}" alt="">
+        <img src="{{ asset('asset/img/${element.image}') }}" alt="">
         <div class="product-label">
             <span class="sale">-30%</span>
             <span class="new">NEW</span>

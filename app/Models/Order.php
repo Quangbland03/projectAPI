@@ -16,8 +16,12 @@ class Order extends Model
     {
         return $this->belongsToMany(Product::class);
     }
-    public function customer()
+    public function users()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class);
+    }
+    public function invoices()
+    {
+        return $this->hasOne(Invoice::class);
     }
 }
