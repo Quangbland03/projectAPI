@@ -47,7 +47,6 @@
                             <a class="nav-link" href="{{ route('admin.product') }}">
                                 Product
                             </a>
-
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.order') }}">
@@ -61,27 +60,14 @@
                         </li>
                     </ul>
                 </div>
+
             </nav>
+
             @yield('content')
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const addProductButton = document.getElementById("addProductButton");
-                    const addProductModal = new bootstrap.Modal(document.getElementById("addProductModal"));
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-                    addProductButton.addEventListener("click", function() {
-                        addProductModal.show();
-                    });
-                    const addProductForm = document.getElementById("addProductForm");
-                    addProductForm.addEventListener("submit", function(event) {
-                        event.preventDefault();
-
-                        addProductModal.hide();
-                    });
-                    /////////////////
-                    
-                });
-            </script>
 </body>
 
 </html>

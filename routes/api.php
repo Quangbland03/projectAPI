@@ -27,4 +27,6 @@ Route::get('listCamera', [ProductController::class, 'indexCamera']);
 Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
 Route::post('storeProduct', [ProductController::class, 'store']);
 Route::get('listCategory', [CategoryController::class, 'index']);
+Route::get('listProduct/{id}', [ProductController::class, 'show1']);
 Route::delete('deleteProduct/{id}', [ProductController::class, 'destroy']);
+Route::put('updateProduct/{id}', [ProductController::class, 'update']);

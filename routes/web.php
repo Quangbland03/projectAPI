@@ -31,10 +31,19 @@ route::prefix('admin')->name('admin.')->group(function()
 });
 
 
+Route::get('createProduct', function () {
+    return view('admin.createProduct');
+});
+Route::get('updateProduct/{id}', function () {
+    return view('admin.updateProduct');
+});
 Route::get('productDetail/{id}', function () {
     return view('users.productDetail');
 });
 Route::get('/', function () {
+    return view('users.home');
+});
+Route::get('/admin', function () {
     return view('admin.product');
 });
 Route::get('/a', function () {
