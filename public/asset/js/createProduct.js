@@ -26,14 +26,15 @@ function showProducts() {
 function createProduct() {
     const name = document.getElementById('productName').value;
     const description = document.getElementById('productDescription').value;
-    const image = document.getElementById('productImage').value;
+    var paragraph = document.getElementById('fileNameDisplay');
+    var paragraphText = paragraph.innerText;
     const price = document.getElementById('productPrice').value;
     const selectedCategoryId = document.getElementById('mySelect').value;
 
     const data = {
         name: name,
         description: description,
-        image: image,
+        image: paragraphText,
         price: price,
         category_id: selectedCategoryId
     };

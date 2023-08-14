@@ -1,172 +1,156 @@
 @extends('users.Layoutuser')
 @section('content')
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <!-- Product main img -->
-                <div class="col-md-5 col-md-push-2">
-                    <div id="product-main-img">
-                        <div class="product-preview">
-                            <img src="./img/product01.png" alt="">
-                        </div>
-
-                        <div class="product-preview">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-
-                        <div class="product-preview">
-                            <img src="./img/product06.png" alt="">
-                        </div>
-
-                        <div class="product-preview">
-                            <img src="./img/product08.png" alt="">
-                        </div>
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Product main img -->
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img">
+                    <div class="product-preview">
+                        <img src="" alt="" id="myimage">
+                    </div>
+                    <div class="product-preview">
+                        <img src="./img/product03.png" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="./img/product06.png" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="./img/product08.png" alt="">
                     </div>
                 </div>
-                <!-- /Product main img -->
-
-                <!-- Product thumb imgs -->
-                <div class="col-md-2  col-md-pull-5">
-                    <div id="product-imgs">
-                        <div class="product-preview">
-                            <img src="" alt="" id="myimage">
-                        </div>
-
-                        <div class="product-preview">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-
-                        <div class="product-preview">
-                            <img src="./img/product06.png" alt="">
-                        </div>
-
-                        <div class="product-preview">
-                            <img src="./img/product08.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product thumb imgs -->
-
-                <!-- Product details -->
-                <div class="col-md-5">
-                    <div class="product-details">
-                        <h2 class="product-name" id="product-name"></h2>
-                        <div>
-                            <div class="product-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <a class="review-link" href="#">10 Review(s) | Add your review</a>
-                        </div>
-                        <div>
-                            <h3 id="product-price"></h3> <del class="product-old-price">$990.00</del>
-                            <span class="product-available">In Stock</span>
-                        </div>
-                        <p id="descriptionDetail"></p>
-
-                        <div class="product-options">
-                            <label>
-                                Size
-                                <select class="input-select">
-                                    <option value="0">X</option>
-                                </select>
-                            </label>
-                            <label>
-                                Color
-                                <select class="input-select">
-                                    <option value="0">Red</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <div class="add-to-cart">
-                            <div class="qty-label">
-                                Qty
-                                <div class="input-number">
-                                    <input type="number">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
-                                </div>
-                            </div>
-                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                        </div>
-
-
-                        <ul class="product-links">
-                            <li>Category:</li>
-                            <li><a href="#">Headphones</a></li>
-                            <li><a href="#">Accessories</a></li>
-                        </ul>
-
-                        <ul class="product-links">
-                            <li>Share:</li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                        </ul>
-
-                    </div>
-                </div>
-                <!-- /Product details -->
-
             </div>
-            <!-- /row -->
+            <!-- /Product main img -->
+
+            <!-- Product thumb imgs -->
+            <div class="col-md-2 col-md-pull-5">
+                <div id="product-imgs">
+                    <div class="product-preview">
+                        <img src="" alt="" id="myimage">
+                    </div>
+                    <div class="product-preview">
+                        <img src="./img/product03.png" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="./img/product06.png" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="./img/product08.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- /Product thumb imgs -->
+
+            <!-- Product details -->
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name" id="product-name"></h2>
+                    <div>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <a class="review-link" href="#">10 Review(s) | Add your review</a>
+                    </div>
+                    <div>
+                        <h3 id="product-price"></h3> <del class="product-old-price">$990.00</del>
+                        <span class="product-available">In Stock</span>
+                    </div>
+                    <p id="descriptionDetail"></p>
+
+                    <div class="product-options">
+                        <label>
+                            Size
+                            <select class="input-select">
+                                <option value="0">X</option>
+                            </select>
+                        </label>
+                        <label>
+                            Color
+                            <select class="input-select">
+                                <option value="0">Red</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="add-to-cart">
+                        <div class="qty-label">
+                            Qty
+                            <div class="input-number">
+                                <input type="number">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                    </div>
+
+                    <ul class="product-links">
+                        <li>Category:</li>
+                        <li><a href="#">Headphones</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Share:</li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /Product details -->
         </div>
-        <!-- /container -->
+        <!-- /row -->
     </div>
-    <script>
-        function getIDFromURL() {
-            const url = window.location.href;
-            const segments = url.split('/');
-            return segments[segments.length - 1];
-        }
+    <!-- /container -->
+</div>
+<script>
+    function getIDFromURL() {
+        const url = window.location.href;
+        const segments = url.split('/');
+        return segments[segments.length - 1];
+    }
 
-        // Get the ID from the URL
-        const myid = getIDFromURL();
+    // Get the ID from the URL
+    const myid = getIDFromURL();
 
+    function showProducts() {
+        const url = "http://127.0.0.1:8000/api/listok";
 
-        function showProducts() {
-            const url = "http://127.0.0.1:8000/api/listok";
+        fetch(url + "/" + getIDFromURL())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const nameInput = document.getElementById('product-name');
+                const nameInput4 = document.getElementById('myimage');
+                const nameInput1 = document.getElementById('product-price');
+                const nameInput2 = document.getElementById('descriptionDetail');
 
-            fetch(url + "/" + getIDFromURL())
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then(data => {
+                const imgElement = document.getElementById("myimage");
+                imgElement.src = "{{ asset('asset/img') }}/" + data.image;
 
+                // Update input values with student information fetched from the API
+                nameInput.textContent = data.name;
+                nameInput1.textContent = data.price;
+                nameInput2.textContent = data.descriptionDetail;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
 
-                    const nameInput = document.getElementById('product-name');
-                    const nameInput4 = document.getElementById('myimage');
-                    const nameInput1 = document.getElementById('product-price');
-                    const nameInput2 = document.getElementById('descriptionDetail');
-                    const imgElement = document.getElementById("myimage");
-                    imgElement.src =  {{ asset('asset/img/data.name') }};
-
-
-                    // Cập nhật giá trị của các input với thông tin sinh viên lấy từ API
-                    nameInput.textContent = data.name;
-                    nameInput1.textContent = data.price;
-                    nameInput2.textContent = data.descriptionDetail;
-
-
-
-
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-
-        // Gọi hàm khi trang được tải
-        showProducts();
-    </script>
+    // Call the function when the page is loaded
+    showProducts();
+</script>
 @endsection

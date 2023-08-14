@@ -19,6 +19,7 @@
                 <label for="productImage" class="form-label">Product Image</label>
                 <input type="file" class="form-control" id="productImage" name="productImage">
                 <div id="errorImage" class="error-message" style="color: red"></div>
+                <p id="fileNameDisplay" style="display: none"></p>
             </div>
             <div class="mb-3">
                 <label for="productPrice" class="form-label">Product Price</label>
@@ -33,6 +34,21 @@
             <button type="button" class="btn btn-primary" onclick="createProduct()">Create Product</button>
         </form>
     </div>
-</nav>
+    <script>
+
+    // Add this function to handle the file input change event
+    function handleFileInputChange() {
+        var fileInput = document.getElementById('productImage');
+        var fileNameDisplay = document.getElementById('fileNameDisplay');
+
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = fileInput.files[0].name;
+        }
+    }
+
+    // Attach the event listener to the file input
+    var productImageInput = document.getElementById('productImage');
+    productImageInput.addEventListener('change', handleFileInputChange);
+    </script>
 
 @endsection

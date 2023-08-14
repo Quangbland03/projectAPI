@@ -41,15 +41,21 @@ function showProducts1() {
 
             data.forEach(element => {
                 output += `
-            <tr id="productRow_${element.id}" style="border:1.5px solid rgb(67, 187, 185); font-weight: bold;">
-            <td>${element.name}</td>
+            <tr id="productRow_${element.id}" style="border:1.5px solid rgb(67, 187, 185); font-weight: bold; width: 1000px;">
+            <td style="width: 14%;">${element.name}</td>
             <td>${element.description}</td>
             <td>${element.price}</td>
-            <td>${element.image}</td>
+            <td>
+            <div class="image-container">
+                <img src="http://127.0.0.1:8000/asset/img/${element.image}" class="img-fluid" alt="">
+            </div>
+        </td>
+
             <td>${element.name1}</td>
             <td class="text-center">
                 <div class="d-flex justify-content-center">
-                    <a href="/updateProduct/${element.id}" "btn btn-warning btn-sm font-weight-bold" >Edit</a>
+                <a href="/updateProduct/${element.id}" class="btn btn-warning btn-sm font-weight-bold">Edit</a>
+
 
                 </div>
             </td>
@@ -65,7 +71,5 @@ function showProducts1() {
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-
 }
-
 showProducts1();

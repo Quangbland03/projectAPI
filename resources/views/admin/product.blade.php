@@ -9,7 +9,7 @@
         </div>
         <h4 id="products">Manager products</h4>
         <table class="table table-bordered border-6" style="border:2px solid rgb(67, 187, 185); font-weight: bold;">
-            <thead>
+            <thead >
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
@@ -59,6 +59,23 @@
         max-width: 100%;
         max-height: 100%;
     }
+    <style>
+    .table {
+        width: 100%;
+    }
+
+    .table th,
+    .table td {
+        border: 1px solid #dee2e6;
+        text-align: left;
+        padding: 8px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
+    }
+
+    .table td {
+        max-width: 150px; /* Đặt kích thước cố định cho ô (vd: 150px) */
+        word-wrap: break-word; /* Cho phép chữ dài tự động xuống dòng */
+    }
+
 </style>
 
 
