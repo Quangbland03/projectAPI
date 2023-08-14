@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('list', [ProductController::class, 'indexHome']);
+<<<<<<< HEAD
 Route::get('listSmart', [ProductController::class, 'indexSmart']);
 Route::get('listCamera', [ProductController::class, 'indexCamera']);
 Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
+=======
+Route::get('listok/{id}', [ProductController::class, 'show']);
+Route::get('listSmart', [ProductController::class, 'indexSmart']);
+Route::get('listCamera', [ProductController::class, 'indexCamera']);
+Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
+Route::post('storeProduct', [ProductController::class, 'store']);
+Route::get('listCategory', [CategoryController::class, 'index']);
+Route::get('listProduct/{id}', [ProductController::class, 'show1']);
+Route::delete('deleteProduct/{id}', [ProductController::class, 'destroy']);
+Route::put('updateProduct/{id}', [ProductController::class, 'update']);
+>>>>>>> quang

@@ -15,7 +15,9 @@
     </div>
     <div class="container ">
 
-        <div class="row list-container mt-50">
+        <div class="row list-container">
+
+
 
         </div>
 
@@ -81,9 +83,10 @@
                         output += `
                         <div class="col-md-3">
 
+         <a href="/productDetail/${element.id}">
 <div class="product">
     <div class="product-img">
-        <img src="${element.image}" alt="">
+        <img src="{{ asset('asset/img/${element.image}') }}" alt="">
         <div class="product-label">
             <span class="sale">-30%</span>
             <span class="new">NEW</span>
@@ -115,6 +118,8 @@
             cart</button>
     </div>
 </div>
+
+</a>
 </div>
                 `;
                     });

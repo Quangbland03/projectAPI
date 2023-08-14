@@ -17,8 +17,8 @@ class Comment extends Model
     {
         return $this->belongsTo(Product::class);
     }
-    public function customers()
+    public function users()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class);
     }
 }

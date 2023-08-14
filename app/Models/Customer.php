@@ -14,13 +14,9 @@ class Customer extends Model
         'phone',
         'address',
     ];
-    public function comments()
+    public function invoices()
     {
-        return $this->hasMany(Comment::class);
-    }
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(invoice::class);
     }
 
 
