@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,17 @@ use App\Http\Controllers\CategoryController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//User
 Route::get('list', [ProductController::class, 'indexHome']);
 Route::get('listok/{id}', [ProductController::class, 'show']);
 Route::get('listSmart', [ProductController::class, 'indexSmart']);
 Route::get('listCamera', [ProductController::class, 'indexCamera']);
 Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
+Route::post('storemax', [OrderController::class, 'storemax']);
+
+
+
+//admin
 Route::post('storeProduct', [ProductController::class, 'store']);
 Route::get('listCategory', [CategoryController::class, 'index']);
 Route::get('listProduct/{id}', [ProductController::class, 'show1']);
