@@ -14,9 +14,9 @@ class Customer extends Model
         'phone',
         'address',
     ];
-    public function invoices()
+    public function orders()
     {
-        return $this->hasMany(invoice::class);
+        return $this->hasMany(Order::class);
     }
 
 

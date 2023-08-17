@@ -58,6 +58,9 @@ Route::get('/camera', function () {
 Route::get('/accessories', function () {
     return view('users.accessories');
 })->name('accessories');
+Route::get('/cart', function () {
+    return view('users.cart');
+})->name('card');
 
 
 

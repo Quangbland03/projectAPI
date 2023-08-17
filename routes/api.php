@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,8 @@ Route::get('listok/{id}', [ProductController::class, 'show']);
 Route::get('listSmart', [ProductController::class, 'indexSmart']);
 Route::get('listCamera', [ProductController::class, 'indexCamera']);
 Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
-Route::post('storemax', [OrderController::class, 'storemax']);
+Route::post('saveCart', [CartController::class, 'store']);
+Route::get('listCart', [CartController::class, 'index']);
 
 
 

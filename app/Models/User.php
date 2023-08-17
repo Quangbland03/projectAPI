@@ -26,9 +26,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-    public function orders()
+    public function carts()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Cart::class);
     }
 
 

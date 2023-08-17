@@ -3,16 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order;
+use App\Models\Cart;
 
-class OrderController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $listcart = Cart::join('products', 'carts.product_id', '=', 'products.id')
+            ->select('carts.id as cart_id', 'carts.quantity', 'products.image', 'products.name', 'products.price')
+            ->where('carts.user_id', '=', 1)
+            ->get();
+
+
+
+        return response()->json($listcart);
     }
 
     /**
@@ -26,20 +33,16 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function storemax(Request $request)
+    public function store(Request $request)
     {
-        $order = new Order([
-            'name' => $request->input('name'),
-            'image' => $request->input('image'),
-            'price' => $request->input('price'),
+        $cart = new Cart([
+
             'quantity' => $request->input('quantity'),
-            // 'user_id' => $request->input('user_id'),
+            'product_id' => $request->input('product_id')
         ]);
+        $cart->save();
 
-        $order->save();
-
-        return response()->json(['message' => 'Order created successfully'], 201);
-
+        return response()->json(['message' => 'Product added successfully'], 200);
     }
 
     /**
