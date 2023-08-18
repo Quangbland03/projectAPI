@@ -29,7 +29,7 @@ Route::get('listCamera', [ProductController::class, 'indexCamera']);
 Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
 Route::post('saveCart', [CartController::class, 'store']);
 Route::get('listCart', [CartController::class, 'index']);
-
+Route::delete('deleteCart/{id}', [CartController::class, 'destroy']);
 
 
 //admin

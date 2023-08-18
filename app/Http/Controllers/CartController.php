@@ -74,6 +74,12 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cart = Cart::findOrFail($id);
+        $cart->delete();
+        $response = [
+            'status' => 'success',
+            'message' => 'Product deleted successfully',
+        ];
+        return response()->json($response);
     }
 }

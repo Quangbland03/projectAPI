@@ -68,16 +68,17 @@
                 .then(data => {
                     let output = '';
 
+
                     data.forEach(element => {
                         output += `
                         <tbody>
-                        <tr>
-                            <th scope="row">${element.id}</th>
+                        <tr id="productRow_${element.id}">
+                            <th scope="row">${element.cart_id}</th>
                             <td><img src="{{ asset('asset/img/${element.image}') }}" alt="Product Image" style="width:200px" ></td>
                             <td>${element.name}</td>
                             <td>${element.price}</td>
                             <td>
-                                <input type="number" class="form-control" value="1" min="1">
+                                ${element.quantity}
                             </td>
                             <td><button class="btn btn-danger btn-sm">Xóa</button></td>
                         </tr>
@@ -92,6 +93,27 @@
                     console.error('Error fetching data:', error);
                 });
         }
+        function deleteProduct(productId) {
+    const url = 'http://127.0.0.1:8000/api/deleteCart';
+    fetch(url + '/' + productId, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const deletedProductRow = document.getElementById(`productRow_${productId}`);
+            if (deletedProductRow) {
+                deletedProductRow.remove();
+
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting product:', error);
+        });
+}
         showProducts();
 </script>
 @endsection
