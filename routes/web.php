@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', function () {
-    return view('users.Layoutuser');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -32,5 +28,54 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+route::prefix('admin')->name('admin.')->group(function()
+    {
+    Route::get('dashboard', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('product', function () {
+        return view('admin.product');
+    })->name('product');
+    Route::get('/admin/order', function () {
+        return view('admin.order');
+    })->name('order');
+    Route::get('/admin/user', function () {
+        return view('admin.user');
+    })->name('user');
+
+});
+
+
+Route::get('cart', function () {
+    return view('users.cart');
+});
+Route::get('createProduct', function () {
+    return view('admin.createProduct');
+});
+Route::get('updateProduct/{id}', function () {
+    return view('admin.updateProduct');
+});
+Route::get('productDetail/{id}', function () {
+    return view('users.productDetail');
+});
+Route::get('/', function () {
+    return view('users.home');
+});
+Route::get('/admin', function () {
+    return view('admin.product');
+});
+Route::get('/a', function () {
+    return view('users.layoutUser');
+});
+Route::get('/smartphone', function () {
+    return view('users.smartPhone');
+})->name('smartphone');
+Route::get('/camera', function () {
+    return view('users.camera');
+})->name('camera');
+Route::get('/accessories', function () {
+    return view('users.accessories');
+})->name('accessories');
 
 require __DIR__.'/auth.php';

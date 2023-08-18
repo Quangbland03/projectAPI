@@ -3,30 +3,24 @@
     <!-- TOP HEADER -->
 <!-- TOP HEADER -->
 <div id="top-header">
-            <!-- TOP HEADER -->
-			<div id="top-header">
-				@if (Route::has('login'))
-				<div class="container">
-					<ul class="header-links pull-right">
-						@auth
-						<li><a href="{{ url('/profile') }}"><i class="fa fa-dollar"></i> {{ Auth::user()->name }}</a></li>
-						@else
-						<li><a href="{{ route('login') }}"><i class="fa fa-user-o"></i> Log in</a></li>
-						@if (Route::has('register'))
-						<li><a href="{{ route('register') }}"><i class="fa fa-user-o"></i> Register</a></li>
-                        @endauth
-					</ul>
-				</div>
-			</div>
-			@endif
-
-            <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-            </ul>
-        </div>
+<!-- TOP HEADER -->
+<div id="top-header">
+    @if (Route::has('login'))
+    <div class="container">
+        <ul class="header-links pull-right">
+            @auth
+            <li><a href="{{ url('/profile') }}"><i class="fa fa-dollar"></i> {{ Auth::user()->name }}</a></li>
+            @else
+            <li><a href="{{ route('login') }}"><i class="fa fa-user-o"></i> Log in</a></li>
+            @if (Route::has('register'))
+            <li><a href="{{ route('register') }}"><i class="fa fa-user-o"></i> Register</a></li>
+            @endif
+        @endauth
+        </ul>
     </div>
-    <!-- /TOP HEADER -->
+</div>
+@endif
+<!-- /TOP HEADER -->
 
     <!-- MAIN HEADER -->
     <div id="header">
@@ -106,9 +100,9 @@
                 <li><a href="#">Hot Deals</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Laptops</a></li>
-                {{-- <li><a href="{{route('smartphone')}}">Smartphones</a></li>--}}
-                {{--<li><a href="{{route('camera')}}">Cameras</a></li>--}}
-                {{--<li><a href="{{route('accessories')}}">Accessories</a></li> --}}
+                <li><a href="{{route('smartphone')}}">Smartphones</a></li>
+                <li><a href="{{route('camera')}}">Cameras</a></li>
+                <li><a href="{{route('accessories')}}">Accessories</a></li>
             </ul>
             <!-- /NAV -->
         </div>
