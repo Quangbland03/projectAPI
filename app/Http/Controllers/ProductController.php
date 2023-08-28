@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,12 +24,7 @@ class ProductController extends Controller
     public function indexHome(Request $request)
 >>>>>>> quang
     {
-        // if($request->has('productImage')){
-        //     $file = $request->productImage;
-        //     $file_name= $file->getClientOriginalName();
-        //     $file->move(public_path('img'), $file_name);
-        // }
-        // $request->merge(['image'=>$file_name]);
+
         $product = Product::join('categories', 'products.category_id', '=', 'categories.id')
             ->select('products.*', 'categories.name as name1')
             ->get();
@@ -36,19 +32,28 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
+    public function indexLaptop()
+    {
+        $categoryId = Category::where('name', 'Laptop')->value('id');
+
+        $show = Product::where('category_id', $categoryId)->get();
+
+        return response()->json($show);
+    }
+
 <<<<<<< HEAD
     public function indexSmart() {
-        $list = Product::all(); 
+        $list = Product::all();
         return response()->json($list);
     }
 
     public function indexCamera() {
-        $list = Product::all(); 
+        $list = Product::all();
         return response()->json($list);
     }
 
     public function indexAccessories() {
-        $list = Product::all(); 
+        $list = Product::all();
         return response()->json($list);
     }
 
@@ -84,10 +89,16 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        if($request->has('productImage')){
+            $file = $request->productImage;
+            $file_name= $file->getClientOriginalName();
+            $file->move(public_path('img'), $file_name);
+        }
+        $request->merge(['image'=>$file_name]);
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2',
             'description' => 'required|string|min:8',
-            'image' => 'required',
+            'image' => 'required|file|mimes:jpeg,png,jpg,gif|max:2048',
             'price' => 'required|numeric',
             'category_id' => 'required|integer'
         ]);
@@ -113,14 +124,47 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function show(string $id)
+    // {
+
+    //     $product = Product::where('id', $id)->first();
+
+    //     $key = Auth::id();
+    //      $responseData = [
+    //     'product' => $product,
+    //     'key' => $key,
+    // ];
+    //     return response()->json(  $responseData );
+    // // $key = Auth::id();
+
+
+    // // return view('admin.ok', compact('key'));
+    // }
+
     public function show(string $id)
     {
-        $product = Product::join('product_details', 'products.id', '=', 'product_details.product_id')
-            ->select('products.*', 'product_details.*')
-            ->where('products.id', $id)
-            ->first();
+        // Lấy thông tin sản phẩm dựa trên ID
+        $product = Product::findOrFail($id);
 
-        return response()->json($product);
+        // Lấy thông tin người dùng đã xác thực (user đang đăng nhập)
+        $users = Auth::user();
+
+        // Khởi tạo biến lưu trữ user_id
+        $userId = null;
+
+        // Nếu người dùng đã xác thực, lấy user_id
+        if ($users) {
+            $userId = $users->id;
+        }
+
+        // Chuẩn bị dữ liệu để trả về
+        $responseData = [
+            'product' => $product,
+            'user_id' => $userId,
+        ];
+
+        // Trả về JSON chứa thông tin sản phẩm và user_id
+        return response()->json($responseData);
     }
 
     public function show1(string $id)
@@ -138,7 +182,7 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2',
-            'description' => 'required|string|min:8',
+            'image' => 'required|file|mimes:jpeg,png,jpg,gif|max:2048',
             'image' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required|integer'
@@ -178,5 +222,20 @@ class ProductController extends Controller
             'message' => 'Product deleted successfully',
         ];
         return response()->json($response);
+    }
+
+    public function search(Request $request)
+    {
+
+        $name = $request->input('name'); // Get the 'name' parameter from the POST request
+
+        // Use Eloquent's where() method to search by name and join with categories table
+        $products = Product::join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_name')
+            ->where('products.name', 'LIKE', '%' . $name . '%')
+            ->get();
+
+        // Return the results as JSON
+        return response()->json($products);
     }
 }

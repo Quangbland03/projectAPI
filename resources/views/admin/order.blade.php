@@ -1,6 +1,5 @@
 @extends('admin.layout')
 @section('content')
-
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
     <button class="btn btn-success mb-3" id="addProductButton">Add Product</button>
     <div class="table-responsive">
@@ -8,11 +7,11 @@
         <table class="table table-bordered border-6" style="border:2px solid rgb(67, 187, 185); font-weight: bold;">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>Category</th>
+                    <th>Total</th>
+                    {{-- <th>Image</th> --}}
+                    {{-- <th>Category</th> --}}
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>

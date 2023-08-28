@@ -1,20 +1,27 @@
 <!-- HEADER -->
 <header>
     <!-- TOP HEADER -->
-    <div id="top-header">
-        <div class="container">
-            <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
-            </ul>
-            <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-            </ul>
-        </div>
+<!-- TOP HEADER -->
+<div id="top-header">
+<!-- TOP HEADER -->
+<div id="top-header">
+    @if (Route::has('login'))
+    <div class="container">
+        <ul class="header-links pull-right">
+            @auth
+            <li><a href="{{ url('/profile') }}"><i class="fa fa-user-o"></i> {{ Auth::user()->name }}</a></li>
+            <li><a href="{{ url('logout') }}"><i class="fa fa-user-o"></i> Log out</a></li>
+            @else
+            <li><a href="{{ route('login') }}"><i class="fa fa-user-o"></i> Log in</a></li>
+            @if (Route::has('register'))
+            <li><a href="{{ route('register') }}"><i class="fa fa-user-o"></i> Register</a></li>
+            @endif
+        @endauth
+        </ul>
     </div>
-    <!-- /TOP HEADER -->
+</div>
+@endif
+<!-- /TOP HEADER -->
 
     <!-- MAIN HEADER -->
     <div id="header">
@@ -41,68 +48,27 @@
                                 <option value="1">Category 01</option>
                                 <option value="1">Category 02</option>
                             </select>
-                            <input class="input" placeholder="Search here">
-                            <button class="search-btn">Search</button>
+                            <input class="input" placeholder="Search here" id="searchok">
+                            <button class="search-btn" id="showsearch">Search</button>
                         </form>
                     </div>
                 </div>
                 <!-- /SEARCH BAR -->
 
                 <!-- ACCOUNT -->
-                <div class="col-md-3 clearfix">
+                <div class="col-md-3 clearfix">s
                     <div class="header-ctn">
                         <!-- Wishlist -->
                         <div>
-                            <a href="#">
+                            <a href="/cart">
                                 <i class="fa fa-heart-o"></i>
-                                <span>Your Wishlist</span>
+                                <span>MyCart</span>
                                 <div class="qty">2</div>
                             </a>
                         </div>
                         <!-- /Wishlist -->
 
-                        <!-- Cart -->
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span>Your Cart</span>
-                                <div class="qty">3</div>
-                            </a>
-                            <div class="cart-dropdown">
-                                <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="{{ asset('asset/img/product01.png') }}" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
 
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product02.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-                                </div>
-                                <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
-                                </div>
-                                <div class="cart-btns">
-                                    <a href="#">View Cart</a>
-                                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Cart -->
 
                         <!-- Menu Toogle -->
                         <div class="menu-toggle">
@@ -132,6 +98,7 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <li class="active"><a href="{{route('home')}}">Home</a></li>
 =======
                 <li class="active"><a href="">Home</a></li>
@@ -139,6 +106,12 @@
                 <li><a href="#">Hot Deals</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Laptops</a></li>
+=======
+                <li class=""><a href="">Home</a></li>
+                {{-- <li><a href="#">Hot Deals</a></li> --}}
+                {{-- <li><a href="#">Categories</a></li> --}}
+                <li><a href="/laptop">Laptops</a></li>
+>>>>>>> quang
                 <li><a href="{{route('smartphone')}}">Smartphones</a></li>
                 <li><a href="{{route('camera')}}">Cameras</a></li>
                 <li><a href="{{route('accessories')}}">Accessories</a></li>

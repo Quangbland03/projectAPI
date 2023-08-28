@@ -5,20 +5,21 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <!-- Product main img -->
+
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div class="product-preview">
                         <img src="" alt="" id="myimage">
                     </div>
+
                     <div class="product-preview">
-                        <img src="./img/product03.png" alt="">
+                        <img src="" alt="">
                     </div>
                     <div class="product-preview">
-                        <img src="./img/product06.png" alt="">
+                        <img src="" alt="">
                     </div>
                     <div class="product-preview">
-                        <img src="./img/product08.png" alt="">
+                        <img src="" alt="">
                     </div>
                 </div>
             </div>
@@ -28,16 +29,16 @@
             <div class="col-md-2 col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
-                        <img src="" alt="" id="myimage">
+                        <img src="" alt="" id="">
                     </div>
                     <div class="product-preview">
-                        <img src="./img/product03.png" alt="">
+                        <img src="" alt="">
                     </div>
                     <div class="product-preview">
-                        <img src="./img/product06.png" alt="">
+                        <img src="" alt="">
                     </div>
                     <div class="product-preview">
-                        <img src="./img/product08.png" alt="">
+                        <img src="" alt="">
                     </div>
                 </div>
             </div>
@@ -58,36 +59,36 @@
                         <a class="review-link" href="#">10 Review(s) | Add your review</a>
                     </div>
                     <div>
-                        <h3 id="product-price"></h3> <del class="product-old-price">$990.00</del>
+                        <h3 id="product-price"></h3>
                         <span class="product-available">In Stock</span>
                     </div>
                     <p id="descriptionDetail"></p>
 
                     <div class="product-options">
-                        <label>
+                        {{-- <label>
                             Size
                             <select class="input-select">
                                 <option value="0">X</option>
                             </select>
-                        </label>
-                        <label>
+                        </label> --}}
+                        {{-- <label>
                             Color
                             <select class="input-select">
                                 <option value="0">Red</option>
                             </select>
-                        </label>
+                        </label> --}}
                     </div>
 
                     <div class="add-to-cart">
                         <div class="qty-label">
                             Qty
                             <div class="input-number">
-                                <input type="number">
+                                <input type="number" value="1" id="number_vip">
                                 <span class="qty-up">+</span>
                                 <span class="qty-down">-</span>
                             </div>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <button class="add-to-cart-btn" onclick="createProduct() "><i class="fa fa-shopping-cart"></i> add to cart</button>
                     </div>
 
                     <ul class="product-links">
@@ -138,17 +139,46 @@
                 const nameInput2 = document.getElementById('descriptionDetail');
 
                 const imgElement = document.getElementById("myimage");
-                imgElement.src = "{{ asset('asset/img') }}/" + data.image;
+                imgElement.src = "{{ asset('asset/img') }}/" + data.product.image;
 
                 // Update input values with student information fetched from the API
-                nameInput.textContent = data.name;
-                nameInput1.textContent = data.price;
-                nameInput2.textContent = data.descriptionDetail;
+                nameInput.textContent = data.product.name;
+                nameInput1.textContent = data.product.price;
+                nameInput2.textContent = data.key;
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
     }
+
+
+        function createProduct() {
+
+            const quantity = document.getElementById('number_vip').value;
+
+            const data = {
+
+                quantity: quantity,
+                product_id: myid,
+            };
+            const url = 'http://127.0.0.1:8000/api/listop1';
+            fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Add to card success');
+                    window.location.href = '/cart';
+                })
+                .catch(error => {
+                    console.error('Error creating product:', error);
+                });
+
+        }
 
     // Call the function when the page is loaded
     showProducts();
