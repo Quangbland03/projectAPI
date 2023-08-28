@@ -3,23 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cart;
+use App\Models\Customer;
 
-class CartController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $listcart = Cart::join('products', 'carts.product_id', '=', 'products.id')
-            ->select('carts.id as cart_id', 'carts.quantity', 'products.image', 'products.name', 'products.price')
-            ->where('carts.user_id', '=', 1)
-            ->get();
-
-
-
-        return response()->json($listcart);
+        //
     }
 
     /**
@@ -35,13 +28,15 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = new Cart([
-
-            'quantity' => $request->input('quantity'),
-            'product_id' => $request->input('product_id')
+        $customer = new Customer([
+            'fullname' => $request->input('fullname'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address'),
+           
         ]);
-        $cart->save();
-
+        $customer->save();  
+        
         return response()->json(['message' => 'Product added successfully'], 200);
     }
 
@@ -74,12 +69,6 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        $cart = Cart::findOrFail($id);
-        $cart->delete();
-        $response = [
-            'status' => 'success',
-            'message' => 'Product deleted successfully',
-        ];
-        return response()->json($response);
+        //
     }
 }

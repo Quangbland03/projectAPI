@@ -65,18 +65,18 @@
                     <p id="descriptionDetail"></p>
 
                     <div class="product-options">
-                        <label>
+                        {{-- <label>
                             Size
                             <select class="input-select">
                                 <option value="0">X</option>
                             </select>
-                        </label>
-                        <label>
+                        </label> --}}
+                        {{-- <label>
                             Color
                             <select class="input-select">
                                 <option value="0">Red</option>
                             </select>
-                        </label>
+                        </label> --}}
                     </div>
 
                     <div class="add-to-cart">
@@ -139,21 +139,18 @@
                 const nameInput2 = document.getElementById('descriptionDetail');
 
                 const imgElement = document.getElementById("myimage");
-                imgElement.src = "{{ asset('asset/img') }}/" + data.image;
+                imgElement.src = "{{ asset('asset/img') }}/" + data.product.image;
 
                 // Update input values with student information fetched from the API
-                nameInput.textContent = data.name;
-                nameInput1.textContent = data.price;
-                nameInput2.textContent = data.descriptionDetail;
+                nameInput.textContent = data.product.name;
+                nameInput1.textContent = data.product.price;
+                nameInput2.textContent = data.key;
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
     }
-    function extractFileNameFromURL(url) {
-            const segments = url.split('/');
-            return segments[segments.length - 1];
-        }
+
 
         function createProduct() {
 
@@ -164,7 +161,7 @@
                 quantity: quantity,
                 product_id: myid,
             };
-            const url = 'http://127.0.0.1:8000/api/saveCart';
+            const url = 'http://127.0.0.1:8000/api/listop1';
             fetch(url, {
                     method: 'POST',
                     headers: {

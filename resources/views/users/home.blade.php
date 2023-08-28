@@ -88,15 +88,13 @@
     <div class="product-img">
         <img src="{{ asset('asset/img/${element.image}') }}" alt="">
         <div class="product-label">
-            <span class="sale">-30%</span>
             <span class="new">NEW</span>
         </div>
     </div>
     <div class="product-body">
-        <p class="product-category">Category</p>
-        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-        <h4 class="product-price">${element.price}<del class="product-old-price">$990.00</del>
-        </h4>
+        <p class="product-category">${element.name1}</p>
+        <h3 class="product-name"><a href="#">${element.name}</a></h3>
+        <h4 class="product-price">${element.price}</h4>
         <div class="product-rating">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -131,8 +129,6 @@
                     console.error('Error fetching data:', error);
                 });
         }
-
-        // Gọi hàm khi trang được tải
         showProducts();
     </script>
 @endsection

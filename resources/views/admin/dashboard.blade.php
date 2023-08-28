@@ -1,8 +1,10 @@
 @extends('admin.layout')
 @section('content')
+
+
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
     <div class="table-responsive">
-        <h2 id="products">Products</h2>
+        <h2 id="products">Dashboard</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>

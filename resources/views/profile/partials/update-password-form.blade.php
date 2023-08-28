@@ -19,8 +19,10 @@
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 
+        <br>
+
         <div>
-            <x-input-label for="password" :value="__('New Password')" />
+            <x-input-label for="password" :value="__('New Password')" /><br>
             <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>

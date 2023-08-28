@@ -31,6 +31,15 @@
     </style>
 
 <body>
+    <div>
+        @if(Auth::check())
+        @auth(isset($user))
+        {{Auth::user()->name}}
+        <a href="{{url('admin/logout')}}">Logout</a>
+        @endauth
+        @endif
+    </div>
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -44,17 +53,17 @@
                         </li>
                         <li class="nav-item">
 
-                            <a class="nav-link" href="{{ route('admin.product') }}">
+                            <a class="nav-link" href="{{url('admin/product') }}">
                                 Product
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.order') }}">
+                            <a class="nav-link" href="{{url('admin/account') }}">
                                 Accounts
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.user') }}">
+                            <a class="nav-link" href="{{url('admin/order') }}">
                                 Orders
                             </a>
                         </li>

@@ -9,7 +9,8 @@
     <div class="container">
         <ul class="header-links pull-right">
             @auth
-            <li><a href="{{ url('/profile') }}"><i class="fa fa-dollar"></i> {{ Auth::user()->name }}</a></li>
+            <li><a href="{{ url('/profile') }}"><i class="fa fa-user-o"></i> {{ Auth::user()->name }}</a></li>
+            <li><a href="{{ url('logout') }}"><i class="fa fa-user-o"></i> Log out</a></li>
             @else
             <li><a href="{{ route('login') }}"><i class="fa fa-user-o"></i> Log in</a></li>
             @if (Route::has('register'))
@@ -47,15 +48,15 @@
                                 <option value="1">Category 01</option>
                                 <option value="1">Category 02</option>
                             </select>
-                            <input class="input" placeholder="Search here">
-                            <button class="search-btn">Search</button>
+                            <input class="input" placeholder="Search here" id="searchok">
+                            <button class="search-btn" id="showsearch">Search</button>
                         </form>
                     </div>
                 </div>
                 <!-- /SEARCH BAR -->
 
                 <!-- ACCOUNT -->
-                <div class="col-md-3 clearfix">
+                <div class="col-md-3 clearfix">s
                     <div class="header-ctn">
                         <!-- Wishlist -->
                         <div>
@@ -96,10 +97,10 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="">Home</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Laptops</a></li>
+                <li class=""><a href="">Home</a></li>
+                {{-- <li><a href="#">Hot Deals</a></li> --}}
+                {{-- <li><a href="#">Categories</a></li> --}}
+                <li><a href="/laptop">Laptops</a></li>
                 <li><a href="{{route('smartphone')}}">Smartphones</a></li>
                 <li><a href="{{route('camera')}}">Cameras</a></li>
                 <li><a href="{{route('accessories')}}">Accessories</a></li>

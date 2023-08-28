@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            // $table->string('name');
-            // $table->string('image');
-            // $table->float('price');
             $table->integer('quantity');
             $table->unsignedBigInteger('user_id')->default(1);
             $table->unsignedBigInteger('product_id');
@@ -24,10 +21,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('carts');

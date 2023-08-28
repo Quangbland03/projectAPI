@@ -5,28 +5,39 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Admin;
+use App\Models\User;
 
 
 class AdminLoginController extends Controller
 {
     //
-    public function authenticate(Request $request): RedirectResponse
+    public function index(){
+        return view ('admin.login');
+    }
+
+    public function loginPost(Request $request)
     {
-        $credentials = $request->validate([
-            'admin' => ['required', 'email'],
-            'pwd' => ['required'],
-        ]);
+        if(Auth::attempt(['email'=> $request->email, 'password'=> $request ->password]))
+        {
+            if(Auth::check()){
+                $user = Auth::user();
+                    //return view ("admin.dashboard", ['user' => Auth::user()]);
+                    return redirect('admin/dashboard');
+                }else{
+                    return back();
+                }
+            }
+    }
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
 
-            return redirect()->intended('admin.dashboard');
-        }
+    public function logout(Request $request){
+        Auth::logout();
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('admin/login');
     }
 }
 

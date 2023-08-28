@@ -15,7 +15,7 @@
                   </div>
                   <hr class="my-4">
                   <div class="container mt-5">
-                    <h2>Your Shopping Cart</h2>
+                    {{-- <h2>Your Shopping Cart</h2> --}}
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead class="thead-dark">
@@ -37,10 +37,14 @@
 
 
 
-
-                  <div class="pt-5">
-                    <h6 class="mb-0"><a href="/" class="text-body"><i class="fa fa-long-arrow-alt-left me-2"></i>Back
-                        to shop</a></h6>
+                  <div class="layout">
+                    <div class="pt-5">
+                      <h6 class="mb-0"><a href="/" class="text-body"><i class="fa fa-long-arrow-alt-left me-2"></i>Back
+                          to shop</a></h6>
+                    </div>
+                    <div class="cart-btns">
+                      <a href="/checkout">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -54,68 +58,60 @@
 </div>
 
 <script>
-
-  function showProducts() {
-            const url = "http://127.0.0.1:8000/api/listCart";
-
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    let output = '';
-
-
-                    data.forEach(element => {
-                        output += `
-                        <tbody>
-                        <tr id="productRow_${element.id}">
-                            <th scope="row">${element.cart_id}</th>
-                            <td><img src="{{ asset('asset/img/${element.image}') }}" alt="Product Image" style="width:200px" ></td>
-                            <td>${element.name}</td>
-                            <td>${element.price}</td>
-                            <td>
-                                ${element.quantity}
-                            </td>
-                            <td><button class="btn btn-danger btn-sm">Xóa</button></td>
-                        </tr>
-                    </tbody>
-                `;
-                           });
-
-                    const listContainer = document.querySelector('.list-container');
-                    listContainer.innerHTML = output;
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-        function deleteProduct(productId) {
-    const url = 'http://127.0.0.1:8000/api/deleteCart';
-    fetch(url + '/' + productId, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-        .then(response => response.json())
+    function showProducts() {
+      const url = "http://127.0.0.1:8000/api/listcart";
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
         .then(data => {
-            console.log(data);
-            const deletedProductRow = document.getElementById(`productRow_${productId}`);
-            if (deletedProductRow) {
-                deletedProductRow.remove();
+          let output = '';
 
-            }
+          data.forEach(element => {
+            let price = element.price * element.quantity;
+            output += `
+              <tr id="productRow_${element.cart_id}">
+                <th scope="row">${element.cart_id}</th>
+                <td><img src="{{ asset('asset/img/') }}/${element.image}" alt="Product Image" style="width:200px" ></td>
+                <td>${element.name}</td>
+                <td>${price}</td>
+                <td>${element.quantity}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="deleteProduct(${element.cart_id})">Xóa</button></td>
+              </tr>`;
+          });
+
+          const listContainer = document.querySelector('.list-container');
+          listContainer.innerHTML = output;
         })
         .catch(error => {
-            console.error('Error deleting product:', error);
+          console.error('Error fetching data:', error);
         });
-}
-        showProducts();
-</script>
+    }
+
+    function deleteProduct(productId) {
+      const url = 'http://127.0.0.1:8000/api/deleteCart';
+      fetch(url + '/' + productId, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          const deletedProductRow = document.getElementById(`productRow_${productId}`);
+          if (deletedProductRow) {
+            deletedProductRow.remove();
+          }
+        })
+        .catch(error => {
+          console.error('Error deleting product:', error);
+        });
+    }
+
+    showProducts();
+  </script>
 @endsection
-
-
