@@ -100,18 +100,11 @@ Route::get('productDetail/{id}', function () {
 });
 Route::get('/', function () {
     return view('users.home');
-<<<<<<< HEAD
-})->name('home');
-Route::get('/a', function () {
-    return view('users.layoutUser');
-});
-=======
 });
 
 Route::get('/a', function () {
     return view('users.layoutUser');
 });
->>>>>>> quang
 Route::get('/smartphone', function () {
     return view('users.smartPhone');
 })->name('smartphone');

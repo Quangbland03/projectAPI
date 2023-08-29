@@ -97,21 +97,7 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <li class="active"><a href="{{route('home')}}">Home</a></li>
-=======
                 <li class="active"><a href="">Home</a></li>
->>>>>>> quang
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Laptops</a></li>
-=======
-                <li class=""><a href="">Home</a></li>
-                {{-- <li><a href="#">Hot Deals</a></li> --}}
-                {{-- <li><a href="#">Categories</a></li> --}}
-                <li><a href="/laptop">Laptops</a></li>
->>>>>>> quang
                 <li><a href="{{route('smartphone')}}">Smartphones</a></li>
                 <li><a href="{{route('camera')}}">Cameras</a></li>
                 <li><a href="{{route('accessories')}}">Accessories</a></li>

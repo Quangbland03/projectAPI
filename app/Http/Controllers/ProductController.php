@@ -18,13 +18,8 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-<<<<<<< HEAD
-    public function indexHome()
-=======
-    public function indexHome(Request $request)
->>>>>>> quang
-    {
 
+    public function indexHome(){
         $product = Product::join('categories', 'products.category_id', '=', 'categories.id')
             ->select('products.*', 'categories.name as name1')
             ->get();
@@ -41,7 +36,6 @@ class ProductController extends Controller
         return response()->json($show);
     }
 
-<<<<<<< HEAD
     public function indexSmart() {
         $list = Product::all();
         return response()->json($list);
@@ -57,32 +51,7 @@ class ProductController extends Controller
         return response()->json($list);
     }
 
-=======
-    public function indexSmart()
-    {
-        $categoryId = Category::where('name', 'Smart Phone')->value('id');
 
-        $show = Product::where('category_id', $categoryId)->get();
-
-        return response()->json($show);
-    }
-    public function indexCamera()
-    {
-        $categoryId = Category::where('name', 'Camera')->value('id');
-
-        $show = Product::where('category_id', $categoryId)->get();
-
-        return response()->json($show);
-    }
-    public function indexAccessories()
-    {
-        $categoryId = Category::where('name', 'Accessorie')->value('id');
-
-        $show = Product::where('category_id', $categoryId)->get();
-
-        return response()->json($show);
-    }
->>>>>>> quang
     /**
      * Show the form for creating a new resource.
      */

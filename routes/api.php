@@ -19,11 +19,9 @@ Route::get('getid', [CartFinalController::class, 'getid']);
 Route::post('listop1', [CartFinalController::class, 'store']);
 Route::get('listop', [CartFinalController::class, 'index']);
 Route::get('list', [ProductController::class, 'indexHome']);
-<<<<<<< HEAD
 Route::get('listSmart', [ProductController::class, 'indexSmart']);
 Route::get('listCamera', [ProductController::class, 'indexCamera']);
 Route::get('listAccessories', [ProductController::class, 'indexAccessories']);
-=======
 Route::get('listok/{id}', [ProductController::class, 'show']);
 Route::get('listSmart', [ProductController::class, 'indexSmart']);
 Route::get('listCamera', [ProductController::class, 'indexCamera']);
@@ -50,8 +48,5 @@ Route::get('listCategory', [CategoryController::class, 'index']);
 Route::get('listProduct/{id}', [ProductController::class, 'show1']);
 Route::delete('deleteProduct/{id}', [ProductController::class, 'destroy']);
 Route::put('updateProduct/{id}', [ProductController::class, 'update']);
-<<<<<<< HEAD
->>>>>>> quang
-=======
 Route::put('updateAccount/{id}', [UserController::class, 'update']);
->>>>>>> quang
+
